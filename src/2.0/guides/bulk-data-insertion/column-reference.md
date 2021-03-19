@@ -40,12 +40,13 @@ Header/Column Name | Query String Parameter Equivalent | Description
 `products` | `products` | List of all products on the page. Separate products with a comma. For example: Sports;Ball;1;5.95,Toys; Top;1:1.99.
 `prop1` - `prop75` | `c1` - `c75` | Analytics property name.
 `purchaseID` | `purchaseID` | Purchase ID number.
+`queryString` | N/A | The column that you put all query string data in. Data must be in key/value pairs and be fully URL encoded, including any multibyte characters. Its contents is used in a `GET` or `POST` call to Analytics. When BDIA submits a `queryString` row to Adobe Analytics, it adds the following param values if they are not present:<br>`AQB=1` (Start of server call parameters)<br>`AQE=1` (End of server call parameters)<br>`ce=UTF-8` (Character Encoding of UTF-8)
 `referrer` | `r` | The URL of the page referrer.
 `reportSuiteID` | Contained in the URL. See HTTP GET Sample. | Specifies the report suites where you want to submit data. Separate multiple report suite IDs with a comma.
 `resolution` | `s` | Monitor resolution For example, 1280x1024.
 `server` | `server` | The Web server serving the page.
 `state` | `state` | The visitor's U.S. state.
-`timestamp` | `ts` | The time and date on which the data was collected.
+`timestamp` | `ts` | The date and time that the data was collected. [Unix Time](https://en.wikipedia.org/wiki/Unix_time) and [ISO-8601](https://en.wikipedia.org/wiki/ISO_8601) are supported.
 ~~`timezone`~~ | Not supported at this time. | |
 `tnta` | `tnta` | Target data payload, for use with A4T integrations
 ~~`trackingServer`~~ | N/A | *Can only be supplied via column header*
