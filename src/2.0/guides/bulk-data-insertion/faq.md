@@ -27,13 +27,13 @@ The [Data Insertion API](/src/1.4/guides/data-insertion/index.md) and Bulk Data 
 
 * BDIA can only send data to report suites that are configured as "Timestamp enabled" or "Timestamp optional."
 * Historical data for a visitor grouping must be ingested before any current data can be processed, unless Timestamp Optional report suites are being used and visitor continuity is not possible or not desirable.
-* The amount of server calls that can be processed in a given time are dependent on throttle limits and allocated resources for that customer. Spikes in server calls must be reported to Client Care in the same ways that normal data collection dictates.
-* Do not send more than 1 file per 20 seconds per visitor group. Files can be as large as 100 MB compressed (gzip)
+* The amount of server calls that can be processed in a given time are dependent on throttle limits and allocated resources for that customer. Spikes in server calls must be reported to Adobe similarly to traditional data collection through AppMeasurement.
+* Do not send more than 1 file per 20 seconds per visitor group.
 * Utilize enough visitor groups so that you do not send more than 2000 rows/second per visitor group.
 
 ## How frequently can I upload files?
 
-Before using BDIA, a customer must provide an expected volume of ingestion. From the expected volume, a per-second throttle limit is configured within our system. This configuration throttles the number per-second ingestion server calls. If the system detects the throttle limit may be exceeded, it will process uploaded files more slowly to stay within the limit.
+Before using BDIA, a customer must provide an expected volume of ingestion. From the expected volume, a per-second throttle limit is configured within Adobe's system. This configuration throttles the number per-second ingestion server calls. If the system detects the throttle limit may be exceeded, it will process uploaded files more slowly to stay within the limit.
 
 These limits help ensure a timely processing and availability of data for Adobe Analytics reporting. They also help protect the system from becoming overwhelmed before proper capacity has been provisioned for a sharp increase in call volume.
 
