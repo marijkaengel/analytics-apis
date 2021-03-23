@@ -17,5 +17,5 @@ Successfully using the API follows this overarching workflow:
 
 1. **API project is set up with the correct permissions**: See [Getting started](../../getting-started/index.md) for information around the correct permissions, creating an API client in the Adobe I/O Console, and successfully authenticating.
 2. **Estimate repair size**: The Data Repair API incurs charges based on every row of data it scans for repairs. Use the [Server call estimate endpoint](server-call-estimate.md) to retrieve the cost of a job and obtain a `validationToken`, which is required for the job creation call.
-3. **Create repair job**: Use the [Job endpoint](job.md). This endpoint requires a report suite, date range, validation token, and a job definition.
+3. **Create repair job**: Use the [Job endpoint](job.md). This endpoint requires a report suite, date range, validation token, and a [Job definition](variables.md).
 4. **Monitor progress**: When a repair job is created, a job ID is returned. You can use the [Job ID endpoint](job-id.md) to monitor the status of a job at any point after job submission.
