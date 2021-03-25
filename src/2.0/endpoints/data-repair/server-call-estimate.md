@@ -11,7 +11,10 @@ You can calculate the approximate cost of a repair job with the following formul
 
 `[Server calls returned by API call] * [CPMM rate found in sales order]`
 
-The date range is specified in days and is based on the time zone of the Report Suite. The date range is inclusive of the start and end dates for estimates and repairs. The `ANALYTICS_GLOBAL_COMPANY_ID` can be found in Adobe Analytics > Admin > Company Settings > API Access. Look for the bold text value in the second sentence.
+The date range is specified in days and is based on the time zone of the Report Suite. The date range is inclusive of the start and end dates for estimates and repairs. The `ANALYTICS_GLOBAL_COMPANY_ID` can be found in API Access under [Company settings](https://experienceleague.adobe.com/docs/analytics/admin/company-settings/c-company-settings.html) in Adobe Analytics.
+
+`GET https://analytics.adobe.io/api/{ANALYTICS_GLOBAL_COMPANY_ID}/datarepair/v1/{REPORT_SUITE_ID}/serverCallEstimate`
+
 
 ## Example request
 
