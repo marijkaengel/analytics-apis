@@ -208,7 +208,7 @@ Each API call that creates a job or requests server call estimates requires a JS
 }
 ```
   
-###`deleteQueryString`
+### `deleteQueryString`
 
   * Remove the query string from a variable.  If the value does not appear to be a URL, no action is taken.
   * Supported Filters: None
