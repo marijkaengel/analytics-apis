@@ -31,7 +31,7 @@ The amount of time a job takes depends on the number of days processed, and how 
 
 If you run a report in Adobe Analytics referencing a dimension and date range processed by the Data Repair API, it can return `Unspecified`. Once the Data Repair job is complete, the values returned by Adobe Analytics (and not removed by the Data Repair process) display normally.
 
-## How does expiration and allocation work when repairing them?
+## How does expiration and allocation work when repairing data?
 
 An eVar value can exist across multiple hits or visits depending on the expiration of the eVar.  Consequently, when repairing an eVar, it is important to check the expiration setting (and potentially use the "Reset" option for that eVar) to avoid historical data "re-populating" the variable. See [Conversion Variables](https://docs.adobe.com/content/help/en/analytics/admin/admin-tools/conversion-variables/conversion-var-admin.html) in the Adobe Analytics Admin user guide for more information on eVar expiration and resetting persisted values.
 
