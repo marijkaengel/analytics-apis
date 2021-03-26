@@ -9,7 +9,7 @@ The `/job` endpoint allows you to create a data repair job (using `POST`) or ret
 
 ## Create a data repair job
 
-The `/job` endpoint uses the `validationToken` from the `/serverCallEstimate` endpoint to confirm that its parameters are the same as those passed to `/serverCallEstimate`. If the parameters do not match or the Server Call volume has changed significantly between the call to `/serverCallEstimate` and the call to `/job`, the Data Repair API returns an error.
+The `/job` endpoint uses the `validationToken` from the `/serverCallEstimate` endpoint to confirm that its parameters are the same as those passed to `/serverCallEstimate`. If the parameters do not match or the server call volume has changed significantly between the call to `/serverCallEstimate` and the call to `/job`, the Data Repair API returns an error.
 
 If the scope of the data repair job changes, re-run the `/serverCallEstimate` endpoint to generate a new `validationToken`.
 
@@ -17,7 +17,7 @@ WARNING: Use of the Data Repair API permanently deletes existing Adobe Analtyics
 
 `POST https://analytics.adobe.io/api/{ANALYTICS_GLOBAL_COMPANY_ID}/datarepair/v1/{REPORT_SUITE_ID}/job`
 
-A JSON object containing the variables and actions to take is required in the API body. See [Job definition and variables](variables.md) for information around how to create this JSON object.
+A JSON object containing the variables and actions to take is required in the request body. See [Job definition and variables](variables.md) for information around how to create this JSON object.
 
 ### Example request
 
