@@ -55,6 +55,20 @@ Each API call that creates a job or requests server call estimates requires a JS
 }
 ```
 
+### `pageurl`, `pageurlfirsthit`, `pageurlvisitstart`, `referrer`, `referrerfirsthit`, `referrervisit`
+
+  * Supported Actions: `deleteQueryString`, `deleteQueryStringParameters`
+
+```json
+{
+    "variables": {
+        "pageurlvisitstart": {
+            "action": "deleteQueryString"
+        }
+    }
+}
+```
+
 ### `evar1` - `evar250`
 
 * Supported Actions: `delete`, `set`
@@ -102,7 +116,7 @@ Each API call that creates a job or requests server call estimates requires a JS
 ```
 
 
-### `mobileappid`, `mobilemessagebuttonname`, `mobilemessageid`, `mobilerelaunchcampaigncontent`, `mobilerelaunchcampaignmedium`, `mobilerelaunchcampaignsource`, `mobilerelaunchcampaignterm`, `mobilerelaunchcampaigntrackingcode`
+### Mobile: `mobileappid`, `mobilemessagebuttonname`, `mobilemessageid`, `mobilerelaunchcampaigncontent`, `mobilerelaunchcampaignmedium`, `mobilerelaunchcampaignsource`, `mobilerelaunchcampaignterm`, `mobilerelaunchcampaigntrackingcode`
 
 * Supported Actions: `delete`, `set`
 
@@ -117,7 +131,7 @@ Each API call that creates a job or requests server call estimates requires a JS
 }
 ```
 
-### `latlon1`, `latlon23`, `latlon45`, `mobileaction`, `pointofinterest`, `pointofinterestdistance`
+### Mobile: `latlon1`, `latlon23`, `latlon45`, `mobileaction`, `pointofinterest`, `pointofinterestdistance`
 
 * Supported Actions: `delete`
 
@@ -131,7 +145,7 @@ Each API call that creates a job or requests server call estimates requires a JS
 }
 ```
 
-### `videoadname`, `videoadplayername`, `videoadadvertiser`, `videoaudioalbum`, `videoaudioartist`, `videoaudioauthor`, `videoaudiolabel`, `videoaudiopublisher`, `videoaudiostation`, `videoadcampaign`, `videochannel`, `videocontenttype`, `videoepisode`, `videofeedtype`, `videomvpd`, `videoname`, `videonetwork`, `videopath`, `videoplayername`, `videoseason`, `videoshow`, `videoshowtype`, `videostreamtype`
+### Video: `videoadname`, `videoadplayername`, `videoadadvertiser`, `videoaudioalbum`, `videoaudioartist`, `videoaudioauthor`, `videoaudiolabel`, `videoaudiopublisher`, `videoaudiostation`, `videoadcampaign`, `videochannel`, `videocontenttype`, `videoepisode`, `videofeedtype`, `videomvpd`, `videoname`, `videonetwork`, `videopath`, `videoplayername`, `videoseason`, `videoshow`, `videoshowtype`, `videostreamtype`
 
 * Supported Actions: `delete`, `set`
 
@@ -166,7 +180,7 @@ Each API call that creates a job or requests server call estimates requires a JS
 ### `delete`
 
 * All values for the specified variable are deleted for the indicated timeframe
-* Supported Filters: `inList`, `containsAtSign`
+* Supported Filters: `inList`, `isURL`, `isNotURL`, `startsWith`, `endsWith`, `contains`
 
 ```json
 {
@@ -181,7 +195,7 @@ Each API call that creates a job or requests server call estimates requires a JS
 ### `set`
 
   * Set the variable to a fixed value for the indicated timeframe
-  * Supported Filters: `inList`, `isEmpty`, `containsAtSign`
+  * Supported Filters: `inList`, `isEmpty`,  `isURL`, `isNotURL`, `startsWith`, `endsWith`, `contains`
 
 ```json
 {
@@ -194,6 +208,37 @@ Each API call that creates a job or requests server call estimates requires a JS
 }
 ```
   
+###`deleteQueryString`
+
+  * Remove the query string from a variable.  If the value does not appear to be a URL, no action is taken.
+  * Supported Filters: None
+
+```json
+{
+    "variables": {
+        "pageurl": {
+            "action": "deleteQueryString"
+        }
+    }
+}
+```
+
+### `deleteQueryStringParameters`
+
+  * Remove one or more query string parameters from a variable.  If the value does not appear to be a URL, no action is taken.
+  * Supported Filters: None
+
+```json
+{
+    "variables": {
+        "referrer": {
+            "action": "deleteQueryStringParameters",
+            "parameters": ["param1", "param2"]
+        }
+    }
+}
+```
+
 ## Filters
 
 ### `inList`
@@ -208,7 +253,7 @@ Each API call that creates a job or requests server call estimates requires a JS
             "action": "delete",
             "filter": {
                 "condition": "inList",
-                "matchValues": ["match1", "match2]
+                "matchValues": ["match1", "match2"]
             }
         }
     }
@@ -217,7 +262,7 @@ Each API call that creates a job or requests server call estimates requires a JS
 
 ### `isEmpty`
 
-* Limit the action to variables whose current value is empty
+  * Limit the action to variables whose current value is empty
 
 ```json
 {
@@ -233,9 +278,9 @@ Each API call that creates a job or requests server call estimates requires a JS
 }
 ```
   
-### `containsAtSign`
+### `contains`
 
-* Limit the action to variables whose current value contains the character `@`
+  * Limit the action to variables whose current value contains the given value.
 
 ```json
 {
@@ -243,7 +288,78 @@ Each API call that creates a job or requests server call estimates requires a JS
         "evar1": {
             "action": "delete",
             "filters": {
-                "condition": "containsAtSign"
+                "condition": "contains",
+                "matchValue": "@"
+            }
+        }
+    }
+}
+```
+
+### `startsWith`
+
+  * Limit the action to variables whose current value starts with the given value.
+
+```json
+{
+    "variables": {
+        "evar1": {
+            "action": "delete",
+            "filters": {
+                "condition": "startsWith",
+                "matchValue": "XYZ"
+            }
+        }
+    }
+}
+```
+
+### `endsWith`
+
+  * Limit the action to variables whose current value ends with the given value.
+
+```json
+{
+    "variables": {
+        "evar1": {
+            "action": "delete",
+            "filters": {
+                "condition": "endsWith",
+                "matchValue": "XYZ"
+            }
+        }
+    }
+}
+```
+
+### `isURL`
+
+  * Limit the action to variables whose current value is a URL.
+
+```json
+{
+    "variables": {
+        "evar1": {
+            "action": "delete",
+            "filters": {
+                "condition": "isURL"
+            }
+        }
+    }
+}
+```
+
+### `isNotURL`
+
+  * Limit the action to variables whose current value is not a URL.
+
+```json
+{
+    "variables": {
+        "evar1": {
+            "action": "delete",
+            "filters": {
+                "condition": "isNotURL"
             }
         }
     }
