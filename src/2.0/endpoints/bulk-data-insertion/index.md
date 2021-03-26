@@ -85,6 +85,6 @@ With a file ingest POST request, a file object is returned in the response. That
 
 ## Sample Call
 
-```bash
+```sh
 curl -X POST -H "x-adobe-vgid:prod-18" -H "Authorization: Bearer <IMS_ACCESS_TOKEN>" -H "x-api-key:<CLIENT_ID>" -F file=@/tmp/ingest_file.gz "https://https://analytics-collection.adobe.io/aa/collect/v1/events"
 ```

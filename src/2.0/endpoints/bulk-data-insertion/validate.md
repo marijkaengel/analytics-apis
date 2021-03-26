@@ -34,6 +34,6 @@ See also [Troubleshooting](troubleshooting.md) for additional failed responses.
 
 ## Sample cURL Call
 
-```bash
+```sh
 curl -X POST -H "Authorization: Bearer <IMS_ACCESS_TOKEN>" -H "x-api-key:<CLIENT_ID>" -F file=@/tmp/ingest_file.gz "https://<BDIA_HOST>/aa/collect/v1/events/validate"
 ```

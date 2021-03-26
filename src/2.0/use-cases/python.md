@@ -7,20 +7,20 @@ description: Send API calls to Adobe using Python.
 
 1. Create a local virtual environment
     
-    ```bash
+    ```sh
     $ rm -rf venv;
     $ virtualenv -p $(which python3 2>/dev/null || which python) venv
     ```
 
 2. Activate the virtual environment
 
-    ```bash
+    ```sh
     $ [ -f venv/bin/activate ] && source venv/bin/activate || source venv/Scripts/activate
     ```
 
 3. Install python requirements
 
-    ```bash
+    ```sh
     $ pip install -r requirements.txt
     ```
    

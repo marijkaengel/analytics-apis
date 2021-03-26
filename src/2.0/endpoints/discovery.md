@@ -15,7 +15,7 @@ For example, if you have multiple logins for various companies, you can use this
 
 The following example requests the user's information for company logins:
 
-```bash
+```sh
 curl -X GET --header "Accept: application/json" --header "x-api-key: {CLIENT_ID}" --header "Authorization: Bearer {ACCESS_TOKEN}" "https://analytics.adobe.io/discovery/me"
 ```
 

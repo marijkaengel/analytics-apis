@@ -1,7 +1,7 @@
 {
     "swagger" : "2.0",
     "info" : {
-      "description" : "The endpoints described here are routed through Adobe.io. \n\t\t\t\t\t\t\t\tIn order to use these endpoints you must create an oAuth client that is \n\t\t\t\t\t\t\t\tsubscribed to access the Adobe Analytics Reporting API.",
+      "description" : "The endpoints described here are routed through Adobe.io. In order to use these endpoints you must create an oAuth client that is subscribed to access the Adobe Analytics Reporting API.",
       "version" : "v1 - Build: 2019-10-03_20:32:29.323",
       "title" : "Adobe Analytics APIs"
     },
@@ -21,6 +21,8 @@
       "name" : "metrics"
     }, {
       "name" : "reports"
+    }, {
+      "name" : "reportsuites"
     }, {
       "name" : "segments"
     }, {
@@ -1730,7 +1732,7 @@
           }, {
             "name" : "locale",
             "in" : "query",
-            "description" : "Locale",
+            "description" : "Locale. Valid values include 'en_US', 'fr_FR', 'ja_JP', 'de_DE', 'es_ES', 'ko_KR', 'pt_BR', 'zh_CN', and 'zh_TW'.",
             "required" : false,
             "type" : "string",
             "default" : "en_US"
@@ -1818,7 +1820,7 @@
           }, {
             "name" : "locale",
             "in" : "query",
-            "description" : "Locale",
+            "description" : "Locale. Valid values include 'en_US', 'fr_FR', 'ja_JP', 'de_DE', 'es_ES', 'ko_KR', 'pt_BR', 'zh_CN', and 'zh_TW'.",
             "required" : false,
             "type" : "string",
             "default" : "en_US"
@@ -1877,7 +1879,7 @@
           }, {
             "name" : "locale",
             "in" : "query",
-            "description" : "Locale",
+            "description" : "Locale. Valid values include 'en_US', 'fr_FR', 'ja_JP', 'de_DE', 'es_ES', 'ko_KR', 'pt_BR', 'zh_CN', and 'zh_TW'.",
             "required" : false,
             "type" : "string",
             "default" : "en_US"
@@ -1930,7 +1932,7 @@
           }, {
             "name" : "locale",
             "in" : "query",
-            "description" : "Locale",
+            "description" : "Locale. Valid values include 'en_US', 'fr_FR', 'ja_JP', 'de_DE', 'es_ES', 'ko_KR', 'pt_BR', 'zh_CN', and 'zh_TW'.",
             "required" : false,
             "type" : "string",
             "default" : "en_US"
@@ -2003,6 +2005,560 @@
           }
         }
       },
+      "/reportsuites/virtualreportsuites": {
+        "get": {
+          "tags": [
+            "reportsuites"
+          ],
+          "summary": "Retrieves many virtual report suites using the given search criteria",
+          "operationId": "userGetVirtualReportSuites",
+          "parameters": [
+            {
+              "name": "limit",
+              "in": "query",
+              "description": "Number of results per page",
+              "schema": {
+                "type": "string",
+                "default": "10"
+              }
+            },
+            {
+              "name": "page",
+              "in": "query",
+              "description": "Page number (base 0 - first page is \"0\")",
+              "schema": {
+                "type": "string",
+                "default": "0"
+              }
+            },
+            {
+              "name": "expansion",
+              "in": "query",
+              "description": "Comma-delimited list of additional virtual report suite metadata fields to include on response",
+              "required": false,
+              "style": "form",
+              "explode": false,
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "globalCompanyKey",
+                    "parentRsid",
+                    "parentRsidName",
+                    "timezone",
+                    "timezoneZoneinfo",
+                    "currentTimezoneOffset",
+                    "segmentList",
+                    "description",
+                    "modified",
+                    "isDeleted",
+                    "dataCurrentAsOf",
+                    "compatibility",
+                    "dataSchema",
+                    "sessionDefinition",
+                    "curatedComponents",
+                    "type",
+                    "backgroundSessionsEnabled"
+                  ]
+                }
+              }
+            },
+            {
+              "name": "filterByIds",
+              "in": "query",
+              "description": "filter list to only include specified virtual report suites",
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "idContains",
+              "in": "query",
+              "description": "Filter list to only include suites whose id contains idContains",
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "segmentIds",
+              "in": "query",
+              "description": "Filter list to only include virtual report suites that have a segment in this Comma-delimited list of segmentids",
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "500": {
+              "description": "Unexpected error; virtual report suite search failed",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/definitions/AnalyticsAsrErrorResponse"
+                  }
+                }
+              }
+            },
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/definitions/VirtualReportSuite"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "tags": [
+            "Virtual Report Suites"
+          ],
+          "summary": "Creates a new virtual report suite",
+          "description": "Creates a virtual report suite. The following attributes are required when creating a virtual report suite: name, parentRsid, and segmentList",
+          "operationId": "userCreateVirtualReportSuite",
+          "parameters": [
+            {
+              "name": "expansion",
+              "in": "query",
+              "description": "Comma-delimited list of additional virtual report suite metadata fields to include on response",
+              "required": false,
+              "style": "form",
+              "explode": false,
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "globalCompanyKey",
+                    "parentRsid",
+                    "parentRsidName",
+                    "timezone",
+                    "timezoneZoneinfo",
+                    "currentTimezoneOffset",
+                    "segmentList",
+                    "description",
+                    "modified",
+                    "isDeleted",
+                    "dataCurrentAsOf",
+                    "compatibility",
+                    "dataSchema",
+                    "sessionDefinition",
+                    "curatedComponents",
+                    "type",
+                    "backgroundSessionsEnabled"
+                  ]
+                }
+              }
+            }
+          ],
+          "requestBody": {
+            "description": "Virtual report suite creation JSON object",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/definitions/VirtualReportSuite"
+                }
+              }
+            }
+          },
+          "responses": {
+            "500": {
+              "description": "Unexpected error; Virtual report suite create failed",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/definitions/AnalyticsAsrErrorResponse"
+                  }
+                }
+              }
+            },
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/definitions/VirtualReportSuite"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/reportsuites/virtualreportsuites/{id}": {
+        "get": {
+          "tags": [
+            "reportsuites"
+          ],
+          "summary": "Retrieves a single virtual report suite by ID",
+          "operationId": "userGetVirtualReportSuite",
+          "parameters": [
+            {
+              "name": "expansion",
+              "in": "query",
+              "description": "Comma-delimited list of additional virtual report suite metadata fields to include on response",
+              "required": false,
+              "style": "form",
+              "explode": false,
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "globalCompanyKey",
+                    "parentRsid",
+                    "parentRsidName",
+                    "timezone",
+                    "timezoneZoneinfo",
+                    "currentTimezoneOffset",
+                    "segmentList",
+                    "description",
+                    "modified",
+                    "isDeleted",
+                    "dataCurrentAsOf",
+                    "compatibility",
+                    "dataSchema",
+                    "sessionDefinition",
+                    "curatedComponents",
+                    "type",
+                    "backgroundSessionsEnabled"
+                  ]
+                }
+              }
+            },
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "404": {
+              "description": "Could not find the virtual report suite for the given id",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/definitions/AnalyticsAsrErrorResponse"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Unexpected error; virtual report suite retrieval failed",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/definitions/AnalyticsAsrErrorResponse"
+                  }
+                }
+              }
+            },
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/definitions/VirtualReportSuite"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "put": {
+          "tags": [
+            "Virtual Report Suites"
+          ],
+          "summary": "Update configuration for a virtual report suite",
+          "operationId": "userUpdateVirtualReportSuite",
+          "parameters": [
+            {
+              "name": "expansion",
+              "in": "query",
+              "description": "Comma-delimited list of additional virtual report suite metadata fields to include on response",
+              "required": false,
+              "style": "form",
+              "explode": false,
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "globalCompanyKey",
+                    "parentRsid",
+                    "parentRsidName",
+                    "timezone",
+                    "timezoneZoneinfo",
+                    "currentTimezoneOffset",
+                    "segmentList",
+                    "description",
+                    "modified",
+                    "isDeleted",
+                    "dataCurrentAsOf",
+                    "compatibility",
+                    "dataSchema",
+                    "sessionDefinition",
+                    "curatedComponents",
+                    "type",
+                    "backgroundSessionsEnabled"
+                  ]
+                }
+              }
+            },
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "requestBody": {
+            "description": "Virtual report suite creation JSON object",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/definitions/VirtualReportSuite"
+                }
+              }
+            }
+          },
+          "responses": {
+            "500": {
+              "description": "Unexpected error; virtual report suite update failed",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/definitions/AnalyticsAsrErrorResponse"
+                  }
+                }
+              }
+            },
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/definitions/VirtualReportSuite"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "delete": {
+          "tags": [
+            "Virtual Report Suites"
+          ],
+          "summary": "Delete virtual report suite",
+          "description": "Deletes or disables a virtual report suite by ID",
+          "operationId": "userDeleteVirtualReportSuite",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "description": "The virtual report suite ID to be deleted",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "500": {
+              "description": "Unexpected error; virtual report suite deletion failed",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/definitions/AnalyticsAsrErrorResponse"
+                  }
+                }
+              }
+            },
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/definitions/DeleteResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/reportsuites/virtualreportsuites/validate": {
+        "post": {
+          "tags": [
+            "reportsuites"
+          ],
+          "summary": "Validates a virtual report suite",
+          "operationId": "userValidateVirtualReportSuite",
+          "parameters": [],
+          "requestBody": {
+            "description": "Virtual report suite creation JSON object",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/definitions/VirtualReportSuite"
+                }
+              }
+            }
+          },
+          "responses": {
+            "500": {
+              "description": "Unexpected error; Virtual report suite validation failed",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/definitions/AnalyticsAsrErrorResponse"
+                  }
+                }
+              }
+            },
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/definitions/VrsCompatibility"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/reportsuites/virtualreportsuites/search": {
+        "post": {
+          "tags": [
+            "reportsuites"
+          ],
+          "summary": "Retrieves many virtual report suites using the given search criteria",
+          "operationId": "searchAll",
+          "parameters": [
+            {
+              "name": "limit",
+              "in": "query",
+              "description": "Number of results per page",
+              "schema": {
+                "type": "string",
+                "default": "10"
+              }
+            },
+            {
+              "name": "page",
+              "in": "query",
+              "description": "Page number (base 0 - first page is \"0\")",
+              "schema": {
+                "type": "string",
+                "default": "0"
+              }
+            },
+            {
+              "name": "expansion",
+              "in": "",
+              "description": "Comma-delimited list of additional virtual report suite metadata fields to include on response",
+              "required": false,
+              "style": "form",
+              "explode": false,
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "globalCompanyKey",
+                    "parentRsid",
+                    "parentRsidName",
+                    "timezone",
+                    "timezoneZoneinfo",
+                    "currentTimezoneOffset",
+                    "segmentList",
+                    "description",
+                    "modified",
+                    "isDeleted",
+                    "dataCurrentAsOf",
+                    "compatibility",
+                    "dataSchema",
+                    "sessionDefinition",
+                    "curatedComponents",
+                    "type",
+                    "backgroundSessionsEnabled"
+                  ]
+                }
+              }
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/x-www-form-urlencoded": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "expansion": {
+                      "type": "string"
+                    },
+                    "filterByIds": {
+                      "type": "string"
+                    },
+                    "idContains": {
+                      "type": "string"
+                    },
+                    "segmentIds": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "500": {
+              "description": "Unexpected error; virtual report suite search failed",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/definitions/AnalyticsAsrErrorResponse"
+                  }
+                }
+              }
+            },
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/definitions/VirtualReportSuite"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/reportsuites/reportsuites/timezones": {
+        "get": {
+          "tags": [
+            "reportsuites"
+          ],
+          "summary": "Get Timezones",
+          "description": "Retrieves all supported timezones.",
+          "operationId": "getTimezones_1",
+          "parameters": [],
+          "responses": {
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/definitions/TimezoneSettings"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },  
       "/auditlogs/usage": {
               "get": {
                   "tags": ["usagelogs"],
@@ -2081,9 +2637,22 @@
                       }
                   }
               }
-          }
-      },
+      }
+    },
     "definitions" : {
+			"AnalyticsAsrErrorResponse": {
+				"properties": {
+					"errorDescription": {
+						"type": "string"
+					},
+					"errorCode": {
+						"type": "string"
+					},
+					"errorId": {
+						"type": "string"
+					}
+				}
+			},
       "AnalyticsCalculatedMetric" : {
         "type" : "object",
         "required" : [ "definition" ],
@@ -2849,6 +3418,29 @@
           }
         }
       },
+			"CalendarSettings": {
+				"properties": {
+					"rsid": {
+						"type": "string"
+					},
+					"anchorDate": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"type": {
+						"type": "string",
+						"enum": [
+							"GREGORIAN",
+							"NRF",
+							"QRS",
+							"CUSTOM_454",
+							"CUSTOM_445",
+							"MODIFIED_GREGORIAN",
+							"CUSTOM_544"
+						]
+					}
+				}
+			},
       "CalendarType" : {
         "type" : "object",
         "properties" : {
@@ -2886,6 +3478,23 @@
           }
         }
       },
+			"CuratedComponent": {
+				"required": [
+					"componentId"
+				],
+				"type": "object",
+				"properties": {
+					"componentId": {
+						"type": "string"
+					},
+					"componentType": {
+						"type": "string"
+					},
+					"curatedName": {
+						"type": "string"
+					}
+				}
+			},
       "DeleteResponse" : {
         "type" : "object",
         "properties" : {
@@ -2913,6 +3522,85 @@
           }
         }
       },
+			"JsonNode": {
+				"type": "object",
+				"properties": {
+					"valueNode": {
+						"type": "boolean"
+					},
+					"floatingPointNumber": {
+						"type": "boolean"
+					},
+					"containerNode": {
+						"type": "boolean"
+					},
+					"missingNode": {
+						"type": "boolean"
+					},
+					"pojo": {
+						"type": "boolean"
+					},
+					"integralNumber": {
+						"type": "boolean"
+					},
+					"short": {
+						"type": "boolean"
+					},
+					"int": {
+						"type": "boolean"
+					},
+					"long": {
+						"type": "boolean"
+					},
+					"double": {
+						"type": "boolean"
+					},
+					"bigDecimal": {
+						"type": "boolean"
+					},
+					"bigInteger": {
+						"type": "boolean"
+					},
+					"textual": {
+						"type": "boolean"
+					},
+					"binary": {
+						"type": "boolean"
+					},
+					"float": {
+						"type": "boolean"
+					},
+					"nodeType": {
+						"type": "string",
+						"enum": [
+							"ARRAY",
+							"BINARY",
+							"BOOLEAN",
+							"MISSING",
+							"NULL",
+							"NUMBER",
+							"OBJECT",
+							"POJO",
+							"STRING"
+						]
+					},
+					"boolean": {
+						"type": "boolean"
+					},
+					"number": {
+						"type": "boolean"
+					},
+					"object": {
+						"type": "boolean"
+					},
+					"array": {
+						"type": "boolean"
+					},
+					"null": {
+						"type": "boolean"
+					}
+				}
+			},
       "Locale" : {
         "type" : "object",
         "properties" : {
@@ -3555,6 +4243,37 @@
       "Sort" : {
         "type" : "object"
       },
+			"Suite": {
+				"properties": {
+					"calendarType": {
+						"$ref": "#/definitions/CalendarSettings"
+					},
+					"rsid": {
+						"title": "Report Suite id",
+						"type": "string"
+					},
+					"parentRsid": {
+						"title": "Parent report suite id for virtual report suite",
+						"type": "string"
+					},
+					"name": {
+						"title": "Suite name",
+						"type": "string"
+					},
+					"timezoneZoneinfo": {
+						"title": "Suite friendly timezone name",
+						"type": "string"
+					},
+					"currency": {
+						"title": "Suite currency",
+						"type": "string"
+					},
+					"id": {
+						"title": "Suite id",
+						"type": "string"
+					}
+				}
+			},
       "SuiteCollectionItem" : {
         "type" : "object",
         "properties" : {
@@ -3630,6 +4349,24 @@
           }
         }
       },
+			"TimezoneSettings": {
+				"properties": {
+					"currentTimezoneOffset": {
+						"type": "number",
+						"format": "float"
+					},
+					"name": {
+						"type": "string"
+					},
+					"timezoneZoneinfo": {
+						"type": "string"
+					},
+					"timezoneId": {
+						"type": "integer",
+						"format": "int32"
+					}
+				}
+			},
       "UnhashReportData" : {
         "type" : "object",
         "properties" : {
@@ -3741,8 +4478,8 @@
                       "format": "int32"
                   }
               }
-          },
-          "UsageLogDto": {
+      },
+      "UsageLogDto": {
               "properties": {
                   "dateCreated": {
                       "type": "string",
@@ -3764,8 +4501,116 @@
                       "type": "string"
                   }
               }
-          }
-       }
+      },
+			"VirtualReportSuite": {
+				"properties": {
+					"internal": {
+						"type": "boolean"
+					},
+					"dataSchema": {
+						"type": "string"
+					},
+					"curatedComponents": {
+						"type": "array",
+						"items": {
+							"$ref": "#/definitions/CuratedComponent"
+						}
+					},
+					"backgroundSessionsEnabled" : {
+						"type" : "boolean"
+					},
+					"timezone": {
+						"type": "integer",
+						"format": "int32"
+					},
+					"siteTitle": {
+						"type": "string"
+					},
+					"description": {
+						"type": "string"
+					},
+					"type": {
+						"type": "string"
+					},
+					"parentRsid": {
+						"type": "string"
+					},
+					"globalCompanyKey": {
+						"type": "string"
+					},
+					"reportSuiteName": {
+						"type": "string"
+					},
+					"isDeleted": {
+						"type": "boolean"
+					},
+					"currentTimezoneOffset": {
+						"type": "number",
+						"format": "float"
+					},
+					"curationEnabled": {
+						"type": "boolean"
+					},
+					"modified": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"id": {
+						"type": "string"
+					},
+					"dataCurrentAsOf": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"segmentList": {
+						"type": "array",
+						"items": {
+							"type": "string"
+						}
+					},
+					"owner": {
+						"$ref": "#/definitions/Owner"
+					},
+					"parentRsidName": {
+						"type": "string"
+					},
+					"rsid": {
+						"type": "string"
+					},
+					"name": {
+						"type": "string"
+					},
+					"timezoneZoneinfo": {
+						"type": "string"
+					},
+					"sessionDefinition": {
+						"$ref": "#/definitions/JsonNode"
+					},
+					"compatibility": {
+						"$ref": "#/definitions/VrsCompatibility"
+					}
+				}
+			},
+			"VrsCompatibility": {
+				"properties": {
+					"valid": {
+						"type": "boolean"
+					},
+					"validator_version": {
+						"type": "string"
+					},
+					"message": {
+						"type": "string"
+					},
+					"supported_products": {
+						"type": "array",
+						"items": {
+							"type": "string"
+						}
+					}
+				}
+			}
+    }
   }
    
   

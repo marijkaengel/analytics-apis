@@ -31,7 +31,7 @@ To get an auth code:
 
 Use the following model to generate an access token: 
 
-```bash
+```sh
 curl  --data "grant_type=authorization_code&client_id={CLIENT ID}&client_secret={CLIENT SECRET}&code={AUTH CODE QUERY PARAMETER}" https://ims-na1.adobelogin.com/ims/token/v1
 ```
 
@@ -88,7 +88,7 @@ To generate an access token:
 
 To test your access token:
 
-```bash
+```sh
 curl -X GET --header "Accept: application/json" --header "x-api-key: {CLIENT ID}" --header "Authorization: Bearer {ACCESS_TOKEN}" "https://analytics.adobe.io/discovery/me"
 ```
 
@@ -122,7 +122,7 @@ curl -X GET --header "Accept: application/json" --header "x-api-key: {CLIENT ID}
 
 1. Use the `globalCompanyId` value in your response (in the above example, it is shown as `testco0`) to test the `GET /users/me` endpoint. To do this, replace the `{GLOBAL COMPANY ID}` parameters in the following request with their corresponding values. Note that `{GLOBAL COMPANY ID}` occurs twice in the following request, once in the `x-proxy-company-global-company-id` header and another in the path:
 
-   ```bash
+   ```sh
    curl -X GET  --header "Authorization: Bearer {ACCESS TOKEN} --header "x-proxy-global-company-id: {GLOBAL COMPANY ID}" --header "x-api-key: {CLIENT ID}" "https://analytics.adobe.io/api/{GLOBAL COMPANY ID}/users/me"
    ```
 

@@ -47,3 +47,7 @@ Frequently asked questions around using the Segments endpoint.
       "template": true
 },
 ```
+
+## What is segment compatibility?
+
+Some segments can only be used with certain reporting engines. For example, some segments work only with Data Warehouse and some work only with Analysis Workspace. The compatibility expansion includes a return object that specifies the products in which the segment can be used. The version information of the products is also included in the response. The version information is for internal use and can be ignored. Compatibility and version information cannot be edited because they are derived from the definition of the segment.
