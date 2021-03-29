@@ -14,25 +14,34 @@ module.exports = {
   siteMetadata: {
     versions: [
       {
-        title: 'v2.0'
+        title: 'v2.0',
+        path: '/2.0/'
       },
       {
         title: 'v1.4',
-        path: 'https://github.com/AdobeDocs/analytics-1.4-apis'
+        path: '/1.4/'
       }
     ],
     pages: [
       {
-        title: 'Adobe Analytics',
+        title: 'Adobe Analytics API',
         path: '/'
       },
       {
-        title: 'Guides',
-        path: '/guides/'
+        title: 'Getting started',
+        path: '/getting-started/'
       },
       {
-        title: 'API Reference',
+        title: 'Endpoint guides',
+        path: '/endpoints/'
+      },
+      {
+        title: 'API reference',
         path: '/api/'
+      },
+      {
+        title: 'Use cases',
+        path: '/use-cases/'
       },
       {
         title: 'Support',
@@ -41,102 +50,212 @@ module.exports = {
     ],
     subPages: [
       {
-        title: 'Get Started',
-        path: '/guides/',
+        title: 'Getting started',
+        path: '/getting-started/',
         pages: [
           {
-            title: 'Overview',
-            path: '/guides/'
+            title: 'JWT',
+            path: '/getting-started/jwt/'
           },
           {
-            title: 'Creating an OAuth Client',
-            path: '/guides/creating_oauth_client/'
-          },
-          {
-            title: 'OAuth using cURL',
-            path: '/guides/oauth_using_curl/'
-          },
-          {
-            title: 'OAuth using POSTMAN',
-            path: '/guides/oauth_using_postman/'
-          },
-          {
-            title: 'JWT Authentication',
-            path: '/guides/jwt_authentication/'
-          }
-        ]
-      },
-      {
-        title: 'Reporting API',
-        path: '/guides/reporting_api/',
-        pages: [
-          {
-            title: 'Overview',
-            path: '/guides/reporting_api/'
-          },
-          {
-            title: 'Reporting with breakdowns',
-            path: '/guides/reporting_api/reporting_breakdowns/',
-            pages: [
-              {
-                title: 'Reporting with single breakdowns',
-                path: '/guides/reporting_api/reporting_breakdowns/',
-              },
-              {
-                title: 'Reporting with multiple breakdowns',
-                path: '/guides/reporting_api/reporting_breakdowns/reporting_multiple_breakdowns/',
-              },
-            ]
-          },
-          {
-            title: 'Reporting tips and tricks',
-            path: '/guides/reporting_api/reporting_tips_tricks/'
-          }
-        ]
-      },
-      {
-        title: 'Discovery API',
-        path: '/guides/discovery_api/'
-      },
-      {
-        title: 'Segments API',
-        path: '/guides/segments_api/'
-      },
-      {
-        title: 'Calculated Metrics API',
-        path: '/guides/calculated_metrics_api/'
-      },
-      {
-        title: 'Migrating',
-        path: '/guides/migrating/'
-      },
-      {
-        title: 'Overview',
-        path: '/support/',
-        header: true,
-        pages: [
-          {
-            title: 'Help',
-            path: '/support/'
+            title: 'Migrating from 1.4',
+            path: '/getting-started/migration/'
           },
           {
             title: 'FAQ',
-            path: '/support/FAQ/'
-          },
-          {
-            title: 'How to contribute',
-            path: '/support/contribute/'
+            path: '/getting-started/faq/'
           }
         ]
       },
       {
-        title: 'Community',
-        path: '/support/community/',
-        header: true,
+        title: 'Endpoint guides',
+        path: '/endpoints/',
         pages: [
           {
-            title: 'Information',
-            path: '/support/community/'
+            title: 'Bulk data insertion',
+            path: '/endpoints/bulk-data-insertion/',
+            pages: [
+              {
+                title: 'API reference',
+                path: '/endpoints/bulk-data-insertion/api-reference/'
+              },
+              {
+                title: 'Column reference',
+                path: '/endpoints/bulk-data-insertion/column-reference/'
+              },
+              {
+                title: 'Validate',
+                path: '/endpoints/bulk-data-insertion/validate/'
+              },
+              {
+                title: 'Visitor groups',
+                path: '/endpoints/bulk-data-insertion/visitor-groups/'
+              },
+              {
+                title: 'Customer ID',
+                path: '/endpoints/bulk-data-insertion/customer-id/'
+              },
+              {
+                title: 'Examples',
+                path: '/endpoints/bulk-data-insertion/example/'
+              },
+              {
+                title: 'Troubleshooting',
+                path: '/endpoints/bulk-data-insertion/troubleshooting/'
+              },
+              {
+                title: 'FAQ',
+                path: '/endpoints/bulk-data-insertion/faq/'
+              }
+            ]
+          },
+          {
+            title: 'Calculated metrics',
+            path: '/endpoints/calculatedmetrics/',
+            pages: [
+              {
+                title: 'Functions',
+                path: '/endpoints/calculatedmetrics/functions'
+              },
+              {
+                title: 'Validate',
+                path: '/endpoints/calculatedmetrics/validate'
+              },
+              {
+                title: 'FAQ',
+                path: '/endpoints/calculatedmetrics/faq'
+              }
+            ]
+          },
+          {
+            title: 'Data repair',
+            path: '/endpoints/data-repair/',
+            pages: [
+              {
+                title: 'API reference',
+                path: '/endpoints/data-repair/api-reference/'
+              },
+              {
+                title: 'Variables',
+                path: '/endpoints/data-repair/variables/'
+              },
+              {
+                title: 'Server call estimate',
+                path: '/endpoints/data-repair/server-call-estimate/'
+              },
+              {
+                title: 'Job',
+                path: '/endpoints/data-repair/job/'
+              },
+              {
+                title: 'Job ID',
+                path: '/endpoints/data-repair/job-id/'
+              },
+              {
+                title: 'FAQ',
+                path: '/endpoints/data-repair/faq/'
+              }
+            ]
+          },
+          {
+            title: 'Discovery',
+            path: '/endpoints/discovery/'
+          },
+          {
+            title: 'Reports',
+            path: '/endpoints/reports/',
+            pages: [
+              {
+                title: 'Breakdowns',
+                path: '/endpoints/reports/breakdowns/'
+              },
+              {
+                title: 'Debugger',
+                path: '/endpoints/reports/debugger/'
+              },
+              {
+                title: 'Examples',
+                path: '/endpoints/reports/examples/'
+              },
+              {
+                title: 'Search filters',
+                path: '/endpoints/reports/search-filters/'
+              },
+              {
+                title: 'Segments',
+                path: '/endpoints/reports/segments/'
+              }
+            ]
+          },
+          {
+            title: 'Report suites',
+            path: '/endpoints/report-suites/'
+          },
+          {
+            title: 'Segments',
+            path: '/endpoints/segments/',
+            pages: [
+              {
+                title: 'Definitions',
+                path: '/endpoints/segments/definition/'
+              },
+              {
+                title: 'Validate',
+                path: '/endpoints/segments/validate/'
+              },
+              {
+                title: 'Examples',
+                path: '/endpoints/segments/examples/'
+              },
+              {
+                title: 'FAQ',
+                path: '/endpoints/segments/faq'
+              }
+            ]
+          },
+          {
+            title: 'Tags',
+            path: '/endpoints/tags/'
+          },
+          {
+            title: 'Usage',
+            path: '/endpoints/usage/'
+          },
+          {
+            title: 'Virtual report suites',
+            path: '/endpoints/vrs/',
+            pages: [
+              {
+                title: 'JSON body reference',
+                path: '/endpoints/vrs/reference/'
+              },
+              {
+                title: 'Examples',
+                path: '/endpoints/vrs/examples/'
+              }
+            ]
+          }
+        ]
+      },
+      {
+        title: 'Use cases',
+        path: '/use-cases/',
+        pages: [
+          {
+            title: 'cURL',
+            path: '/use-cases/curl/'
+          },
+          {
+            title: 'Java',
+            path: '/use-cases/java/'
+          },
+          {
+            title: 'Postman',
+            path: '/use-cases/postman/'
+          },
+          {
+            title: 'Python',
+            path: '/use-cases/python/'
           }
         ]
       }
