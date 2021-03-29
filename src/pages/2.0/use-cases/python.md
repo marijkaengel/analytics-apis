@@ -30,4 +30,4 @@ description: Send API calls to Adobe using Python.
 
 6. Run `python ims_client.py`
 
-See [Python client resources](https://github.com/AdobeDocs/analytics-apis/tree/main/src/2.0/resources/python/) on GitHub for example code and additional resources.
+See [Python client resources](https://github.com/AdobeDocs/analytics-apis/tree/main/src/resources/python/) on GitHub for example code and additional resources.

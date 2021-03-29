@@ -21,7 +21,7 @@ The Bulk Data Insertion API does not place any restrictions on file names. When 
 
 ## What is the difference between the BDIA and the Data Insertion API available in the 1.4 API?
 
-The [Data Insertion API](/src/1.4/guides/data-insertion/index.md) and Bulk Data Insertion API are both methods to submit server-side collection data to Adobe Analytics. Data Insertion API calls are made one event at a time. Bulk Data Insertion API accepts CSV formatted files containing event data, one event per row. Adobe recommends using the Bulk Data Insertion API in most cases.
+The [Data Insertion API](/src/pages/1.4/endpoints/data-insertion/index.md) and Bulk Data Insertion API are both methods to submit server-side collection data to Adobe Analytics. Data Insertion API calls are made one event at a time. Bulk Data Insertion API accepts CSV formatted files containing event data, one event per row. Adobe recommends using the Bulk Data Insertion API in most cases.
 
 ## What are the limitations of using the BDIA?
 
