@@ -49,12 +49,12 @@ Creates a virtual report suite that curates the browser dimension and visits met
 	"curatedComponents": [{
 			"componentId": "variables/browser",
 			"componentType": "dimension",
-			"curatedName": "curated dimension example"
+			"curatedName": "Curated dimension example"
 		},
 		{
 			"componentId": "metrics/visits",
 			"componentType": "metric",
-			"curatedName": "curated metric example"
+			"curatedName": "Curated metric example"
 		}
 	]
 }

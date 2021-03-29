@@ -25,8 +25,8 @@ If the file is not valid or authentication is not configured correctly, you get 
 
 | HTTP Code | JSON Response |
 |--|:--|
-| 400 Range Error | `{"error":"File has 2 rows that do not conform to the required CSV format! (Ex: row #59)"}` |
-| 400 Bad Request | `{"error": "Request is missing required header 'x-adobe-vgid' "` |
+| 400 Range Error | `{"error": "File has 2 rows that do not conform to the required CSV format! (Ex: row #59)"}` |
+| 400 Bad Request | `{"error": "Request is missing required header 'x-adobe-vgid'"` |
 | 400 Bad Request | `{"error": "CSV file missing required header timestamp." }` |
 | 401 Unauthorized | `{"error": "Token validation failed" }` |
 

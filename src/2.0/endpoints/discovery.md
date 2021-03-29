@@ -16,7 +16,7 @@ For example, if you have multiple logins for various companies, you can use this
 The following example requests the user's information for company logins:
 
 ```sh
-curl -X GET --header "Accept: application/json" --header "x-api-key: {CLIENT_ID}" --header "Authorization: Bearer {ACCESS_TOKEN}" "https://analytics.adobe.io/discovery/me"
+curl -X GET --header "x-api-key: {CLIENT_ID}" --header "Authorization: Bearer {ACCESS_TOKEN}" "https://analytics.adobe.io/discovery/me"
 ```
 
 ## Example Response
@@ -41,8 +41,7 @@ The following example shows the response to the previous request by returning va
           "apiRateLimitPolicy": "aa_api_tier10_tp"
         }
       ]
-    },
-    ...
+    }
   ]
 }
 ```

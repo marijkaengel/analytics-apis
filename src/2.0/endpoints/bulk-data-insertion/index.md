@@ -23,16 +23,16 @@ The Bulk Data Insertion API has many requirements that your organization must me
 * Each file consists of a header row (the first row in the file) and subsequent data rows. Rows appear on lines, terminated by a line break (CRLF or LF).
 * The last field in a row must not be followed by a comma.
 * Rows are fields separated by commas. See the [FAQ](faq.md) on how to pass commas as part of a value.
-* Rows must have the same number of columns defined as the header row. Empty fields are allowed by putting two commas. For example, `,,` or `,"",`.
-* A header must contain ALL of the following columns:
+* Rows must have the same number of columns defined as the header row. Empty fields are allowed by putting two commas or an empty string. For example, `,,` or `,"",`.
+* A file must contain ALL of the following columns:
   * `reportSuiteID`
   * `timestamp`
   * `userAgent`
-* A header must also contain at least one of the following columns:
+* A file must also contain at least one of the following columns:
   * `marketingCloudVisitorID`
   * `IPAddress`
   * `customerID.[customerIDType].id` with `customerID.[customerIDType].isMCSeed` set to `true`
-* A header must also contain at least one of the following columns:
+* A file must also contain at least one of the following columns:
   * `pageURL`
   * `pageName`
   * `pe`
@@ -61,7 +61,7 @@ Regardless of which data center your report suite resides in, you can direct BDI
 The following headers are required in the API call:
 
 * **Authorization**: Format is `Bearer <IMS_ACCESS_TOKEN>`. See [Getting started](../../getting-started/index.md) for authentication details.
-* **x-adobe-vgid**: Visitor Group ID. A visitor group represents the name of the processing pipeline to use when processing the file. This can be any name you choose. Files uploaded to different visitor groups should have disjoint visitor IDs. See [Visitor Groups](visitor-groups.md) for more information.
+* **x-adobe-vgid**: Visitor Group ID. A visitor group represents the name of the processing pipeline to use when processing the file. The header value can be any name you choose. Files uploaded to different visitor groups should have disjoint visitor IDs. See [Visitor Groups](visitor-groups.md) for more information.
 * **x-api-key**: Client ID issued from the Adobe I/O console. See [Getting started](../../getting-started/index.md) for more information.
 * **x-adobe-idempotency-key**: *OPTIONAL* - File ID. Every file ingest transaction receives a GUID to uniquely identify that ingest event. You can use this header to pass in your own identifier with each request. If an API call does not include this header, Adobe automatically generates its own and returns it with the response.
 
@@ -86,5 +86,5 @@ With a file ingest POST request, a file object is returned in the response. That
 ## Sample Call
 
 ```sh
-curl -X POST -H "x-adobe-vgid:prod-18" -H "Authorization: Bearer <IMS_ACCESS_TOKEN>" -H "x-api-key:<CLIENT_ID>" -F file=@/tmp/ingest_file.gz "https://https://analytics-collection.adobe.io/aa/collect/v1/events"
+curl -X POST -H "x-adobe-vgid:prod-18" -H "Authorization: Bearer <IMS_ACCESS_TOKEN>" -H "x-api-key: <CLIENT_ID>" -F file=@/tmp/ingest_file.gz "https://analytics-collection.adobe.io/aa/collect/v1/events"
 ```

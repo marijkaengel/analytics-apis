@@ -15,9 +15,7 @@ To obtain Oauth authentication using cURL:
 
 Use the following model as a cURL request for an auth code: 
 
-```
-https://ims-na1.adobelogin.com/ims/authorize?client_id={CLIENT ID}&redirect_uri={REDIRECT URI}&scope=openid,AdobeID,read_organizations,additional_info.job_function,additional_info.projectedProductContext&response_type=code
-```
+`https://ims-na1.adobelogin.com/ims/authorize?client_id={CLIENT ID}&redirect_uri={REDIRECT URI}&scope=openid,AdobeID,read_organizations,additional_info.job_function,additional_info.projectedProductContext&response_type=code`
 
 To get an auth code:
 
@@ -32,7 +30,7 @@ To get an auth code:
 Use the following model to generate an access token: 
 
 ```sh
-curl  --data "grant_type=authorization_code&client_id={CLIENT ID}&client_secret={CLIENT SECRET}&code={AUTH CODE QUERY PARAMETER}" https://ims-na1.adobelogin.com/ims/token/v1
+curl --data "grant_type=authorization_code&client_id={CLIENT ID}&client_secret={CLIENT SECRET}&code={AUTH CODE QUERY PARAMETER}" https://ims-na1.adobelogin.com/ims/token/v1
 ```
 
 To generate an access token:
@@ -123,10 +121,10 @@ curl -X GET --header "Accept: application/json" --header "x-api-key: {CLIENT ID}
 1. Use the `globalCompanyId` value in your response (in the above example, it is shown as `testco0`) to test the `GET /users/me` endpoint. To do this, replace the `{GLOBAL COMPANY ID}` parameters in the following request with their corresponding values. Note that `{GLOBAL COMPANY ID}` occurs twice in the following request, once in the `x-proxy-company-global-company-id` header and another in the path:
 
    ```sh
-   curl -X GET  --header "Authorization: Bearer {ACCESS TOKEN}" --header "x-proxy-global-company-id: {GLOBAL COMPANY ID}" --header "x-api-key: {CLIENT ID}" "https://analytics.adobe.io/api/{GLOBAL COMPANY ID}/users/me"
+   curl -X GET  --header "Authorization: Bearer {ACCESS_TOKEN}" --header "x-proxy-global-company-id: {COMPANY_ID}" --header "x-api-key: {CLIENT_ID}" "https://analytics.adobe.io/api/{COMPANY_ID}/users/me"
    ```
 
-1. Replace `{ACCESS TOKEN}` and `{CLIENT ID}` in the above request with their respective values.
+1. Replace `{ACCESS_TOKEN}` and `{CLIENT_ID}` in the above request with their respective values.
 1. Run the cURL command. The response includes information about the analytics user.
 
 Use your `access token`, `global company id` and `client ID` to make calls to the APIs. You can use the [API reference](../api.md) as an easy way to explore calling the Analytics APIs.

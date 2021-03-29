@@ -50,7 +50,7 @@ field1,"example, with, commas",field3
 If a field contains quotation marks, use two quotes. For example:
 
 ```text
-field1,"these are ""quotation marks"" inside a field",field3.
+field1,"these are ""quotation marks"" inside a field",field3
 ```
 
 The above row results in `these are "quotation marks" inside a field` as the value ingested into Analytics.
@@ -103,4 +103,4 @@ Your best course of action depends on how many invalid rows exist:
 
 ## How do I remove data that was inadvertently uploaded?
 
-Data uploaded through the Bulk data insertion API is permanent. In some cases, you can use the [Data Repair API](../data-repair/index.md), but Adobe strongly recommends that you validate uploads before ingesting them into Adobe Analytics. Adobe Engineering Services can also assist customers in removing data that was accidentally inserted through a paid service engagement. Contact your Adobe Account Manager for more information.
+Data uploaded through the Bulk data insertion API is permanent. In some cases, you can use the [Data Repair API](../data-repair/index.md), but Adobe strongly recommends that you validate uploads before ingesting them into Adobe Analytics. Adobe Engineering Services can also assist customers in removing undesired data through a paid service engagement. Contact your Adobe Account Manager for more information.

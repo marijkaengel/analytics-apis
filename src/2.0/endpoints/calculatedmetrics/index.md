@@ -64,8 +64,8 @@ For example, to retrieve all calculated metrics tagged as part of the *SpringPro
 
 The following example shows a calculated metrics request for a response localized in US English, limited to the first page, and with the size of ten responses per page.
 
-```
-curl -X GET “https://analytics.adobe.io/api/[company name]/calculatedmetrics?locale=en_US&limit=10&page=0” -H “x-api-key: [oauth token]” -H “x-proxy-global-company-id: [company name]” -H “Authorization: Bearer [ims user token]” -H “Accept: application/json” -H “Content-Type: application/json”
+```sh
+curl -X GET "https://analytics.adobe.io/api/[company name]/calculatedmetrics?locale=en_US&limit=10&page=0" -H "x-api-key: [oauth token]" -H "x-proxy-global-company-id: [company name]" -H "Authorization: Bearer [ims user token]" -H "Accept: application/json" -H "Content-Type: application/json"
 ```
 
 ### Example response
@@ -149,8 +149,8 @@ To retrieve a single calculated metric, include its `id` in the request.
 
 ### Example request
 
-```
-curl -X GET “https://analytics.adobe.io/api/[company name]/calculatedmetrics/[calculated metric id]?locale=en_US” -H “x-api-key: [oauth token]” -H “x-proxy-global-company-id: [company id]” -H “Authorization: Bearer [ims user token]” -H “Accept: application/json” -H “Content-Type: application/json”
+```sh
+curl -X GET "https://analytics.adobe.io/api/[company name]/calculatedmetrics/[calculated metric id]?locale=en_US" -H "x-api-key: [oauth token]" -H "x-proxy-global-company-id: [company id]" -H "Authorization: Bearer [ims user token]" -H "Accept: application/json" -H "Content-Type: application/json"
 
 ```
 
@@ -179,8 +179,8 @@ The `DELETE` single calculated metric can be used to remove a calculated metric 
 
 The request is the same as retrieving a single calculated metric except to change the HTTP method to `DELETE`.
 
-```
-curl -X DELETE “https://analytics.adobe.io/api/[company name]/calculatedmetrics/[calculated metrics id]?locale=en_US” -H “x-api-key: [oauth token]” -H “x-proxy-global-company-id: [company name]” -H “Authorization: Bearer [ims user token]” -H “Accept: application/json” -H “Content-Type: application/json”
+```sh
+curl -X DELETE "https://analytics.adobe.io/api/[company name]/calculatedmetrics/[calculated metrics id]?locale=en_US" -H "x-api-key: [oauth token]" -H "x-proxy-global-company-id: [company name]" -H "Authorization: Bearer [ims user token]" -H "Accept: application/json" -H "Content-Type: application/json"
 ```
 
 ## Updating or Changing a Calculated Metric

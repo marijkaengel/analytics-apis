@@ -7,7 +7,7 @@ description: View audit logs around how your organization uses Adobe Analytics.
 
 The Usage endpoint allows you to retrieve the usage and access log data provided within the Logs tool.
 
-`GET https://analytics.adobe.io/api/{GLOBAL_COMPANY_ID}/auditlogs/usage`
+`GET https://analytics.adobe.io/api/{COMPANY_ID}/auditlogs/usage`
 
 ## Supported query string parameters
 
@@ -68,7 +68,7 @@ By default, all event types are included when you make a request to get usage lo
 ## cURL Request Example
 
 ```sh
-curl -X GET "https://analytics.adobe.io/api/[yourGlobalCompanyId]/auditlogs/usage?startDate=2021-01-01T00%3A00%3A00-07&endDate=2021-01-15T14%3A32%3A33-07&limit=10" -H "x-api-key: [yourOAuthClientAPIKey]" -H "x-proxy-global-company-id: [yourGlobalCompanyId]" -H "Authorization: Bearer [ims user token]" -H "Accept: application/json"
+curl -X GET "https://analytics.adobe.io/api/{COMPANY_ID}/auditlogs/usage?startDate=2021-01-01T00%3A00%3A00-07&endDate=2021-01-15T14%3A32%3A33-07&limit=10" -H "x-api-key: {CLIENT_ID}" -H "x-proxy-global-company-id: {COMPANY_ID}" -H "Authorization: Bearer {ACCESS_TOKEN}" -H "Accept: application/json"
 ```
 
 ## Response
@@ -173,7 +173,7 @@ curl -X GET "https://analytics.adobe.io/api/[yourGlobalCompanyId]/auditlogs/usag
 The following request contains query string parameters to filter the logs by eventType, IP and event.
 
 ```sh
-curl -X GET "https://analytics.adobe.io/api/[yourGlobalCompanyId]/auditlogs/usage?startDate=2021-01-01T00%3A00%3A00-07&endDate=2021-01-15T14%3A32%3A33-07&ip=10&eventType=5&event=viewed&limit=10" -H "x-api-key: [yourOAuthClientAPIKey]" -H "x-proxy-global-company-id: [yourGlobalCompanyId]" -H "Authorization: Bearer [ims user token]" -H "Accept: application/json"
+curl -X GET "https://analytics.adobe.io/api/{COMPANY_ID}/auditlogs/usage?startDate=2021-01-01T00%3A00%3A00-07&endDate=2021-01-15T14%3A32%3A33-07&ip=10&eventType=5&event=viewed&limit=10" -H "x-api-key: {CLIENT_ID}" -H "x-proxy-global-company-id: {COMPANY_ID}" -H "Authorization: Bearer {ACCESS_TOKEN}" -H "Accept: application/json"
 ```
 
 ## Response
